@@ -1,0 +1,180 @@
+body {
+    background-color: #F5F5F5;
+    margin: 0;
+}
+
+#main {
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 20%; 
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: gray;
+    color: #E0E0E0;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    background-color: gray;
+    color: #E0E0E0;
+    border-width: 0;
+}
+
+#main-heading {
+    font-size: 80px;
+    margin-top: 0;
+}
+
+#main-heading-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 42%;
+}
+
+.cont-button {
+    position: fixed;
+    top: 20%;
+    height: 50px; 
+    width: 200px;
+    background-color: gray;
+    color: #E0E0E0;
+    font-size: 25px;
+}
+
+.cont-link {
+    color: #E0E0E0;
+}
+
+#cont-heading {
+    font-size: 30px;
+    text-align: center;
+}
+
+#cont-content {
+    font-size: 20px;
+}
+
+.no-bullets {
+    list-style-type: none;
+    padding-left: 25px;
+}
+
+header {
+    text-align: center;
+    height: 100vh;
+}
+
+.sel-li:hover {
+    background-color: #F5F5F5; 
+}
+
+.sel-li:hover a {
+    color: black;
+}
+
+.sel-li:hover a:hover {
+    color: #990000;
+}
+
+a:hover {
+    color: #990000;
+}
+
+.text {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.paragraph-heading {
+    font-size: 30px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.paragraph-content {
+    font-size: 18px;
+    text-indent: 40px;
+    margin: 0;
+}
+
+.list-paragraph {
+    font-size: 18px;
+    margin: 0;
+}
+
+.figure {
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#f3 {
+    width: 50%;
+    height: 60%;
+}
+
+.fig-desc {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    text-align:center; 
+    vertical-align: middle;
+}
+
+#angular {
+    position: relative;
+    left: 15%;
+}
+
+#vue {
+    position: relative;
+    left: 25%;
+    width: 300px;
+    height: 300px;
+}
+
+.paragraph-inner-heading {
+    font-size: 25px;
+    text-indent: 30px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+
+}
+
+pre {
+    white-space: pre-wrap;
+    background-color: #D0D0D0;
+    padding: 5px;
+}
+
+.code {
+    font-size: 15px;
+    direction: ltr;
+}
+
+.link {
+    color: black
+}
+
+hr {
+    margin-top: 25px;
+}
+
+.spec-a {
+    display: block;
+}

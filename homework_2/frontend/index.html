@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Въвеждане на информация</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2 class="header-title">Въвеждане на информация</h2>
+            </div>
+            <form id="info-form">
+                <div class="input-group">
+                    <label for="first-name">Въведете собствено име</label>
+                    <input id="first-name" class="input-box" type="text" 
+                        pattern="[A-ZА-Я][a-zа-я]*" maxlength="50" placeholder="Собствено име">
+                </div>
+                <div class="input-group">
+                    <label for="first-name">Въведете фамилно име</label>    
+                    <input id="last-name" class="input-box" type="text" 
+                        pattern="[A-ZА-Я][a-zа-я]*" maxlength="5-" placeholder="Фамилно име">
+                </div> 
+                <div class="input-group">
+                    <label for="first-name">Въведете курс</label>
+                    <input id="course-year" class="input-box" type="number"
+                        placeholder="Курс - година" min="1" max="6">
+                </div>
+                <div class="input-group">
+                    <label for="first-name">Въведете специалност</label>
+                    <input id="specialty" class="input-box" placeholder="Специалност">
+                </div>
+                <div class="input-group">
+                    <label for="first-name">Въведете дата на раждане</label>
+                    <input id="birthdate" type="date" class="input-box">
+                </div>
+                <div class="input-group">
+                    <label for="first-name">Зодиакален знак</label>
+                    <input id="zodiac-sign" class="input-box" readonly>
+                </div>
+                <!--<div class="input-group">
+                    <label for="first-name">Зодиакален знак</label>
+                    <input id="zodiac-sign" class="input-box" readonly>
+                </div>-->
+                <button type="submit" class="btn">Въведи</button>
+            </form>
+        </div>
+    </body>
+    <script src="send_info.js"></script>
+</html>

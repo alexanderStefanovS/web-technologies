@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NativeScript</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+        <script src="./javascript/code.js"></script>
+    </head>
+    <body>
+        <button class="cont-button" onclick="openNav()">Съдържание</button>
+        <nav id="cont" class="sidenav">
+            <button class="closebtn" onclick="closeNav()">&times;</button>
+            <h2 id="cont-heading">Съдържание</h2>
+            <ul class="no-bullets" id="cont-content">
+                <li class="sel-li"><a class="cont-link" href="#p1">Какво е NativeScript и за какво се използва?</a></li>
+                <li>
+                    <a class="spec-a sel-li cont-link" href="#p2">Начин на работа на NativeScript</a>
+                    <ul class="no-bullets" type="a">
+                        <li class="sel-li"><a class="cont-link" href="#p2.1">Runtimes</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p2.2">Основни модули</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p2.3">NativeScript CLI</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p2.4">NativeScript Plugins</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="spec-a sel-li cont-link" href="#p3">Архитектура NativeScript на приложението</a>
+                    <ul class="no-bullets" type="a">
+                        <li class="sel-li"><a class="cont-link" href="#p3.1">Начална точка</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p3.2">Модули на приложението (Application modules)</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p3.3">Основни модули (Root Modules)</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p3.4">Глобални стилове на приложението</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p3.5">Свързване на данни (Data Binding)</a></li>
+                    </ul>
+                 </li>
+                <li class="sel-li"><a class="cont-link" href="#p4">Интеграция с Angular</a></li>
+                <li>
+                    <a class="spec-a sel-li cont-link" href="#p5">Жизнен цикъл на NativeScript приложението в интеграция с Angular</a>
+                    <ul class="no-bullets" type="a">
+                        <li class="sel-li"><a class="cont-link" href="#p5.1">Модули</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p5.2">Компоненти</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p5.3">Метаданни на компонентите</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p5.4">Жизнен цикъл на компонентите</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p5.5">Стартиране на приложението</a></li>
+                        <li class="sel-li"><a class="cont-link" href="#p5.6">Събития в NativeScript приложението</a></li>
+                    </ul>
+                </li>
+                <li><a class="spec-a sel-li cont-link" href="#p6">Заключение</a></li>
+            </ul>
+        </nav>
+        <article id="main">
+            <header>
+                <h1 id="main-heading">NativeScript</h1>
+                <img id="main-heading-img" src="./img/ns-logo.png">
+            </header>
+            <section class="text">
+                <h2 id="p1" class="paragraph-heading">
+                    Какво е NativeScript и за какво се използва?
+                    <a class="link" href="#ref1">[1]</a>
+                </h2>
+                <p class="paragraph-content">NativeScript е фреймуърк с отворен код за разработка на 
+                    мобилни приложения за Apple iOS и Android. Проложенията за NativeScript се създават 
+                    чрез JavaScript или друг език, който се компилира до него (например TypeScript), 
+                    като се поддържа интеграция с фреймуърци за уеб разработка като Angular и Vue. 
+                    Целта на NativeScript е разработените чрез него мобилни приложения да бъдат 
+                    напълно “native”, т.е. да имат възможност да използват същите API’s като тези, 
+                    създадени чрез Xcode (за Apple iOS) или Android Studio (за Android).  
+                    Освен това разработчиците могат да използват и библиотеки на трети страни 
+                    от CocoaPods, Android Arsenаl, Maven, и npm.js в мобилните си приложения, 
+                    без да се налага да използват “wrapper” софтуер. Чрез NativeScript CLI програмистът 
+                    добива платвормена независимост на своите приложения по достъпен начин.
+                </p> 
+                <h2 id="p2" class="paragraph-heading">
+                    Начин на работа на NativeScript
+                    <a class="link" href="#ref2">[2]</a>
+                </h2>
+                <p class="paragraph-content">
+                    Технологията NativeScript може да бъде представена схематично като комбинация 
+                    от няколко основни части - Runtimes, Core Modules, CLI, Plugins, представени 
+                    чрез следната диаграма:
+                </p>
+                <img id="f1" class="figure" src="./img/figure1.png">
+                <p class="fig-desc">Фигура 1. Схема на работа на NativeScript приложението</p>
+                <h2 id="p2.1" class="paragraph-inner-heading">
+                    Runtimes
+                    <a class="link" href="#ref3">[3]</a>
+                </h2>
+                <p class="paragraph-content">
+                    NativeScript Runtimes дават възможност на програмиста да достъпва API’s на Android
+                    и iOS, използвайки JavaScript. За тази цел те използват JavaScript виртуални машини
+                    - Google’s V8 за Android и WebKit’s JavaScriptCore имплементация, разпределена с iOS 7.0+.
+                </p>
+                <p class="paragraph-content">
+                    NativeScript е фреймуърк, който позволява на разработчиците да пишат мобилни приложения за 
+                    Android и iOS, използвайки JavaScript and CSS. Всяка мобилна платформа притежава своя екосистема 
+                    и използва различни приспособления и езици за разработка - Java/Kotlin за Android и Objective 
+                    C/Swift за iOS. За да се транслира JavaScript код до отговарящите платформени APIs, фреймуъркът 
+                    се нуждае от специален механизъм. Именно за това са отговорни "Runtime" частите на NativeScript.  
+                    Например Android Runtime може да се възприема като своеобразен мост между „световете“ на 
+                    JavaScript и Android. Взаимодействието между NativeScript и Android е представено схематично в 
+                    следното изображение:
+                </p>
+                <img id="f2" class="figure" src="./img/figure2.png">
+                <p class="fig-desc">Фигура 2. Схема на работа на Runtimes</p>
+                <p class="paragraph-content">
+                    V8 JavaScript виртуалната машина на Google e отговорна за обработката на скриптовия
+                    код. Начиниът на работа е аналогиче с този, по който например Node.js обработва
+                    JavaScript и го транслира до основните API’s на системата. И тук динамично се
+                    оправлява поведението на обектите и се извиква Android API функционалността,
+                    когато е необходимо. Виртуалната машина се зарежда в процеса на приложението
+                    и оперира на основната нишка от потребителския интерфейс. 
+                </p>
+                <h2 id="p2.2" class="paragraph-inner-heading">
+                    Основни модули
+                    <a class="link" href="#ref4">[4]</a>
+                </h2>
+                <p class="paragraph-content">
+                    Целта на основните модули (core modules) е да предостави необходимите 
+                    абстракции за достъп до основните естествени платформ. Например модула Gestures
+                    дефинира общ JS API, който превежда TypeScript/JavaScript кода на приложението
+                    в естествените API’s на Gestures (благодарение на Runtimes). Друго нещо, което
+                    предлагат основните модули, е основен XML-базиран начин за дефиниране на
+                    потребителски интерфейс, свързване на данни и навигация, чрез което Angular
+                    и Vue.js могат да се използват като технологии за разработка на приложенията.
+                </p>
+                <img id="f3" class="figure" src="./img/ns-modules.png">
+                <p class="fig-desc">Фигура 3. Схема на работа на Основните модули</p>
+                <h2 id="p2.3" class="paragraph-inner-heading">NativeScript CLI</h2>
+                <p class="paragraph-content">
+                    Командният интерфейс позволява да създаването, изграждането и стартирането на
+                    приложения с помощта на NativeScript. Интерфейсът работи на повечето популярни
+                    ОС като Windows, macOS и Linux.
+                </p>
+                <h2 id="p2.4" class="paragraph-inner-heading">NativeScript Plugins</h2>
+                <p class="paragraph-content">
+                    Плъгините в NativeScript са изграждащи блокове, които капсулират някаква
+                    функционалност и помагат на разработчиците да изграждат приложения по-бързо 
+                    (Основните модули например също са плъгин). Повечето са изградени  
+                    TypeScript/JavaScript, но някои могат да включват естествени библиотеки, 
+                    които се извикват от TS/JS кода благодарение на Runtimes.
+                </p>
+                <p class="paragraph-content">
+                    Плъгините се инсталират чрез командата: tns plugin add
+                </p>
+                <p class="paragraph-content">
+                    Примери за инсталиране на плъгин: tns plugin add nativescript-camera – 
+                        инсталиране на плъгана за камера на NativeScript.
+                </p>
+                <p class="paragraph-content">
+                    Пример за импортиране и използване на плъгина:
+                </p>
+                <pre id="c1">
+                    <code class="code">
+                import * as camera from "nativescript-camera";
+                camera.requestPermissions();
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 1. Пример за импорт на плъгин</p>
+                <p class="paragraph-content">
+                    Пример за премахване на плъгин: tns plugin remove nativescript-camera
+                </p>
+                <h2 id="p3" class="paragraph-heading">
+                    Архитектура на NativeScript приложението
+                    <a class="link" href="#ref5">[5]</a>
+                </h2>
+                <p class="paragraph-content">
+                    Приложенията на NativeScript притежават определена архитектура, когато са написан 
+                    чрез основния фреймуърк (Core Framework).
+                </p>
+                <h2 id="p3.1" class="paragraph-inner-heading">Начална точка</h2>
+                <p class="paragraph-content">
+                    Началната точка за основното NativeScript приложение се декларира във файла 
+                    package.json в root директория на приложението. Декларира се обикновено като 
+                    app.js или app.ts в случай, че сте създали проект чрез TypeScript. Файлът може 
+                    да се използва за извършване на инициализации на ниво приложение, но основната 
+                    му цел е да предаде контрол на основния модул на приложението. За целта трябва 
+                    да бъде извикан метода application.run (), в който да се окаже пътя към 
+                    основния модул.
+                </p>
+                <pre id="c2">
+                    <code class="code">
+                // app.js
+                const application = require("tns-core-modules/application");
+                application.run({ moduleName: "app-root" });           
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 2. Пример за стартиране на приложение</p>
+                <h2 id="p3.2" class="paragraph-inner-heading">Модули на приложението (Application Modules)</h2>
+                <p class="paragraph-content">
+                    NativeScript приложението бива разделено на модули. Даден модул включва поне .xml 
+                    файл, съдържащ имплементацията на потребителския интерфейс. Освен това модулът може 
+                    да съдържа и .js файл за добавяне на логика към модула, както и .css файл, чрез който
+                    се добавят стилове към потребителския интерфейс. Важно за тези допълнителни файлове е 
+                    да бъдат със същото име като .xml файла. 
+                </p>
+                <p class="paragraph-content">Например, следните файлове правят модул:</p>
+                <pre id="c3">
+                    <code class="code">
+                        &lt!-- home-page.xml --&gt
+                        &ltPage class="page" loaded="onPageLoaded"&gt
+                        &ltStackLayout&gt
+                        &ltLabel text="Hooray! Home Page loaded!"/&gt
+                        &lt/StackLayout&gt
+                        &lt/Page&gt
+            
+                        // home-page.js
+                        function onPageLoaded(args) {
+                        console.log("Page Loaded");
+                        }
+                        exports.onPageLoaded = onPageLoaded;
+            
+                        /* home-page.css */
+                        .page {
+                        background-color: teal;
+                        }
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 3. Пример за модул</p>
+                <h2 id="p3.3" class="paragraph-inner-heading">Основни модули (Root Modules)</h2>
+                <p class="paragraph-content">
+                    Тези модули се използват като основа на контейнерите 
+                    за потребителски интерфейс. Понастоящем в NativeScript има само два типа 
+                    потребителски интерфейси:
+                </p>
+                <ul>
+                    <li>
+                        <p class="list-paragraph">
+                            Контейнерът на приложението - той е само един. 
+                            Основният му модул се задава, като бъде подаден на метода application.run ().
+                        </p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph">
+                            Контейнери за моделен изглед – могат да бъдат неограничен брой и се задават 
+                            чрез метода showModal () на всеки UI компонент.
+                        </p>
+                    </li>
+                </ul>
+                <h2 id="p3.4" class="paragraph-inner-heading">Глобални стилове на приложението</h2>
+                <p class="paragraph-content">
+                    NativeScript Core фреймуъркът предоставя и начин за задаване на 
+                    стилизиране на приложения. Това място по подразбиране е във файла app.css в основната
+                     папка на приложението. Всички css правила, декларирани в този файл, се прилагат 
+                     към всички модули на приложението. Името на файла може да се променя. Това трябва 
+                     да се направи преди да бъде извикан метода application.run ():
+                </p>
+                <pre id="c4">
+                    <code class="code">
+                var application = require("tns-core-modules/application");
+                application.setCssFileName("style.css");
+                application.run({ moduleName: "main-page" });       
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 4. Пример за добавяне на стилове</p>
+                <h2 id="p3.5" class="paragraph-inner-heading">Свързване на данни (Data Binding)</h2>
+                <p class="paragraph-content">
+                    Свързването на данни е процесът на свързване на потребителския интерфейс на приложението 
+                    (UI) с обект на JavaScript кода. В NativeScript всеки UI компонент може да бъде свързан 
+                    към свързващ източник. Можете да зададете източник на свързване към всеки компонент на 
+                    потребителския интерфейс чрез пропъртито bindingContext.
+                </p>
+                <pre id="c5">
+                    <code class="code">
+    &lt!-- home-page.xml--&gt
+    &ltPage class="page" loaded="onPageLoaded"&gt
+        &ltStackLayout&gt
+            &ltLabel text=""/&gt
+        &lt/StackLayout&gt
+    &lt/Page&gt
+                            
+    // home-page.js
+    const fromObject=require("tns-core-modules/data/observable").fromObject;
+    function onPageLoaded(args) {
+        const page = args.object;
+        const source = fromObject({ text: "Hooray! Home Page loaded!" });
+        page.bindingContext = source;
+    }
+    exports.onPageLoaded = onPageLoaded;       
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 5. Пример за data binding</p>
+                <h2 id="p4" class="paragraph-heading">
+                    Интеграция с Angular
+                    <a class="link" href="#ref6">[6]</a>
+                </h2>
+                <img id="angular" src="./img/angular.png">
+                <p class="paragraph-content">
+                    Използването на NativeScript в комбинация с Angular е лесно и бързо осъществимо. 
+                    От терминала или командния трябва да се стартира нов проект с тази команда:
+                    tns създават my-angular-app –ng  
+                </p>
+                <p class="paragraph-content">
+                    Това ще създаде нов проект NativeScript с всички необходими Angular файлове, папки и 
+                    настройки, готови за стартиране. По подразбиране Angular проектите използват TypeScript 
+                    и NativeScript няма проблем всичките му настройки и конфигурацията му.
+                </p>
+                <p class="paragraph-content">
+                    Angular предоставя всичко необходимо за създаване на висококачествени NativeScript 
+                    приложения, лесни за поддръжка. Преизползват се Angular концепции като свързване на 
+                    данни, инжектиране на зависимости, услуги и маршрутизация за изграждането на естествени 
+                    мобилни приложения.
+                </p>
+                <p class="paragraph-content">
+                    По сходен начин се осъществява и интеграцияра на NativeScript с Vue.js – друг уеб 
+                    фреймуърк, който чрез NativeScript може да бъде използван за качественото създаване 
+                    на естествени мобилни приложения за Android и iOS. 
+                </p>
+                <img id="vue" src="./img/vue.png">
+                <h2 id="p5" class="paragraph-heading">
+                    Жизнен цикъл на NativeScript приложението в интеграция с Angular
+                    <a class="link" href="#ref7">[7]</a>
+                </h2>
+                <p class="paragraph-content">
+                    Основните градивни елементи на NativeScript приложенията с Angular са модулите и компонентите. 
+                </p>
+                <h2 id="p5.1" class="paragraph-inner-heading">Модули</h2>
+                <p class="paragraph-content">
+                    Приложенията на Angular  са модулни. Модулът е файл, съдържащ 
+                    блок от код, посветен на една единствена цел. Експортира стойност, която може да се 
+                    използва от други части на приложението. Например: export class AppComponent {}
+                </p>
+                <p class="paragraph-content">
+                    Декларацията export е важна, тъй като прави AppComponent достъпен за други модули. 
+                    Клаузата import се използва за препратка към класа на AppComponent от други модули:
+                </p>
+                <pre id="c6">
+                    <code class="code">
+                import { Component } from '@angular/core';
+                import { AppComponent } from './app.component'; 
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 6. Пример за инпорт на компоненти в Angular</p>
+                <p class="paragraph-content">
+                    Някои от модулите могат да зависят от един или повече отделни модула. Модулите, 
+                    инсталирани като npm пакети (като @angular/core в горния пример), трябва да се 
+                    посочват без префикс на пътя. Когато се импортира от един от файловете на проекта, се 
+                    префиксира името на модула с пътя към файла. В този пример е посочена относителния път 
+                    към файла (./). Това означава, че изходният модул е в същата папка (./) като модула, 
+                    който го импортира.
+                </p>
+                <h2 id="p5.2" class="paragraph-inner-heading">Компоненти</h2>
+                <p class="paragraph-content">
+                    Компонентите са основните градивни елементи на NativeScript приложенията, 
+                    изградени с Angular. Всяко приложение на NativeScript съдържа набор от компоненти, 
+                    които определят всеки UI елемент, екран или маршрут. Приложението има един root 
+                    компонент, който съдържа всички други компоненти. Пимер за прост компонент:
+                </p>
+                <pre id="c7">
+                    <code class="code">
+import { Component } from "@angular/core";
+
+@Component({
+    selector: "main-component",
+    template: `
+        &ltStackLayout&gt
+            &ltLabel text="Hello "&gt&lt/Label&gt
+        &lt/StackLayout&gt
+    `
+})
+export class MainComponent {
+    name: string;
+
+    constructor() {
+        this.name = "Angular!";
+    }
+}                
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 7. Пример за компонент в Angular</p>
+                <h2 id="p5.3" class="paragraph-inner-heading">Метаданни на компонентите</h2>
+                <p class="paragraph-content">
+                    Декораторът @Component съдържа метаданни, описващи как се 
+                    аде и представи компонента. Някои от опциите за конфигурация:
+                </p>
+                <ul>
+                    <li><p class="list-paragraph">
+                        selector - CSS селектор, който казва на Angular да
+                        създаде и вмъкне екземпляр от този компонент, където намери селектора в 
+                        шаблона на родителския компонент. Например: &ltmain-component&lt&gt/main-component&gt
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        template - фактическият изглед на потребителския интерфейс на компонента. 
+                        Тук можат да бъдат използвани всички NativeScript UI елементи и потребителски 
+                        дефинирани компоненти на потребителския интерфейс.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        templateUrl - Адресът на файл, където се намира шаблонът на компонента.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        styles - CSS директиви, които определят стила на компонента.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        styleUrls - Масив, съдържащ URL адреси на CSS файлове, които определят 
+                        стила на компонента.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        providers - масив от providers (помощни файлове) за инжектиране на услуги, 
+                        които компонентът изисква.
+                    </p></li>
+                </ul>
+                <h2 id="p5.4" class="paragraph-inner-heading">Жизнен цикъл на компонентите</h2>
+                <p class="paragraph-content">
+                    Жизненият цикъл на компонентите се контролира от Angular приложението. 
+                    То създава, актуализира и унищожава компоненти. Има специални методи, които 
+                    се използват за обработка на различни събития от жизнения цикъл на компонентите. 
+                    Всеки такъв метод започва с префикса ng. 
+                </p>
+                <ul>
+                    <li><p class="list-paragraph">
+                        ngOnInit - Извиква се след инициализиране на всички данни от методите за въвеждане.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        ngOnChanges - Извиква се след промяна на свойство.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        ngDoCheck - Открива и действа при промени, които Angular не може или няма да 
+                        открие самостоятелно. Извиква се при всяко изпълнение на откриване на промяна.
+                    </p></li>
+                    <li><p class="list-paragraph">
+                        ngOnDestroy – Извиква се непосредствено преди Angular да унищожи компонента.
+                    </p></li>
+                </ul>
+                <h2 id="p5.5" class="paragraph-inner-heading">Стартиране на приложението</h2>
+                <p class="paragraph-content">
+                    Началната точка на Angular приложението в NativeScript е методът 
+                    platformNativeScriptDynamic().bootstrapModule(). Той приема root модула като 
+                    аргумент:
+                </p>
+                <pre id="c8">
+                    <code class="code">
+        import { platformNativeScriptDynamic } from "nativescript-angular/platform";
+        import { AppModule } from "./app.module";
+                                        
+        platformNativeScriptDynamic().bootstrapModule(AppModule).then(() => {
+            console.log("The application is now running!");
+        }).catch((e) => {
+            console.log("The application bootstrapping failed with error: " + e);
+        });                  
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 8. Начална точка на приложение</p>
+                <h2 id="p5.6" class="paragraph-inner-heading">Събития в NativeScript приложението</h2>
+                <p class="paragraph-content">
+                    NativeScript позволява обработката на следните събития, настъпващи по време на 
+                    работа на приложението:
+                </p>
+                <ul>
+                    <li><p class="list-paragraph">launch: При стартиране на приложението.</p></li>
+                    <li><p class="list-paragraph">suspend: При спиране на приложението.</p></li>
+                    <li><p class="list-paragraph">resume: Когато приложението поднови работа, след като е било спряно.</p></li>
+                    <li><p class="list-paragraph">displayed: Когато UI елементи се изобразяват.</p></li>
+                    <li><p class="list-paragraph">exit: Когато приложението е прекратено.</p></li>
+                    <li><p class="list-paragraph">lowMemory: Когато паметта на целевото устройство е недостатъчна.</p></li>
+                    <li><p class="list-paragraph">uncaughtError: Когато е налице неприхваната грешка в приложението.</p></li>
+                </ul>
+                <p class="paragraph-content">Примери:</p>
+                <pre id="c9">
+                    <code class="code">
+    import { platformNativeScriptDynamic } from "nativescript-angular/platform";
+    import { AppModule } from "./app.module";
+    import { on as applicationOn, launchEvent, suspendEvent, resumeEvent, exitEvent, lowMemoryEvent, 
+                    uncaughtErrorEvent, ApplicationEventData } from "tns-core-modules/application";
+                                        
+    applicationOn(launchEvent, (args: ApplicationEventData) => {
+        if (args.android) {
+        // For Android applications, args.android is an android.content.Intent class.
+            console.log("Launched Android application with the following intent: " + args.android + ".");
+        } else if (args.ios !== undefined) {
+        // For iOS applications, args.ios is NSDictionary (launchOptions).
+            console.log("Launched iOS application with options: " + args.ios);
+        }
+    });
+                                        
+    applicationOn(suspendEvent, (args: ApplicationEventData) => {
+        if (args.android) {
+        // For Android applications, args.android is an android activity class.
+            console.log("Activity: " + args.android);
+        } else if (args.ios) {
+        // For iOS applications, args.ios is UIApplication.
+            console.log("UIApplication: " + args.ios);
+        }
+    });
+                                        
+    applicationOn(resumeEvent, (args: ApplicationEventData) => {
+        if (args.android) {
+        // For Android applications, args.android is an android activity class.
+            console.log("Activity: " + args.android);
+        } else if (args.ios) {
+        // For iOS applications, args.ios is UIApplication.
+            console.log("UIApplication: " + args.ios);
+        }
+    });
+                                        
+    applicationOn(exitEvent, (args: ApplicationEventData) => {
+        if (args.android) {
+        // For Android applications, args.android is an android activity class.
+            console.log("Activity: " + args.android);
+            if (args.android.isFinishing()) {
+                console.log("Activity: " + args.android + " is exiting");
+            } else {
+                console.log("Activity: " + args.android + " is restarting");
+            } else if (args.ios) {
+                // For iOS applications, args.ios is UIApplication.
+                console.log("UIApplication: " + args.ios);
+            }
+        });
+                                        
+        applicationOn(lowMemoryEvent, (args: ApplicationEventData) => {
+            if (args.android) {
+            // For Android applications, args.android is an android activity class.
+                console.log("Activity: " + args.android);
+            } else if (args.ios) {
+            // For iOS applications, args.ios is UIApplication.
+                console.log("UIApplication: " + args.ios);
+            }
+        });
+                                        
+        applicationOn(uncaughtErrorEvent, (args: ApplicationEventData) => {
+            if (args.android) {
+            // For Android applications, args.android is an NativeScriptError.
+                console.log("NativeScriptError: " + args.android);
+            } else if (args.ios) {
+            // For iOS applications, args.ios is NativeScriptError.
+                console.log("NativeScriptError: " + args.ios);
+            }
+        });
+        platformNativeScriptDynamic().bootstrapModule(AppModule);
+                    </code>
+                </pre>
+                <p class="fig-desc">Koд 9. Примери за обработка на събития</p>
+                <h2 id="p6" class="paragraph-heading">Заключение</h2>
+                <p class="paragraph-content">
+                    NativeScript е иновативен и изключително полезен фреймурък за изграждане на 
+                    естествени мобилни приложения за Android и iOS. Чрез интеграцията си с уеб 
+                    фраймуърци като Angular и Vue.js, той позволява на разработчиците на уеб сайтове 
+                    да използват уменията си за бързо създаване и на приложения за мобилни устройства.
+                </p>
+                <hr>
+                <h2 class="paragraph-heading">Източници</h2>
+                <ul>
+                    <li><p id="ref1" class="list-paragraph">
+                        [1] What is NativeScript?, [<a class="link" href="https://www.nativescript.org/faq/what-is-nativescript">https://www.nativescript.org/faq/what-is-nativescript</a>], последно посетен на 2020-04-08  <a class="link" href="#p1">↩</a>
+                    </p></li>
+                    <li><p id="ref2" class="list-paragraph">
+                        [2] Core concepts, Technical overview, [<a class="link" href="https://docs.nativescript.org/core-concepts/technical-overview">https://docs.nativescript.org/core-concepts/technical-overview</a>], последно посетен на 2020-04-08  <a class="link" href="#p2">↩</a>
+                    </p></li>
+                    <li><p id="ref3" class="list-paragraph">
+                        [3] Android runtime, [<a class="link" href="https://docs.nativescript.org/core-concepts/android-runtime/overview">https://docs.nativescript.org/core-concepts/android-runtime/overview</a>], последно посетен на 2020-04-08  <a class="link" href="#p2.1">↩</a>
+                    </p></li>
+                    <li><p id="ref4" class="list-paragraph">
+                        [4] Using modules in NativeScript, [<a class="link" href="https://docs.nativescript.org/angular/core-concepts/modules">https://docs.nativescript.org/angular/core-concepts/modules</a>], последно посетен на 2020-04-08  <a class="link" href="#p2.2">↩</a>
+                    </p></li>
+                    <li><p id="ref5" class="list-paragraph">
+                        [5] Application architecture, [<a class="link" href="https://docs.nativescript.org/core-concepts/application-architecture">https://docs.nativescript.org/core-concepts/application-architecture</a>], последно посетен на 2020-04-08  <a class="link" href="#p3">↩</a>
+                    </p></li>
+                    <li><p id="ref6" class="list-paragraph">
+                        [6] Angular for NativeScript, [<a class="link" href="https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular">https://www.nativescript.org/nativescript-is-how-you-build-native-mobile-apps-with-angular</a>], последно посетен на 2020-04-08  <a class="link" href="#p4">↩</a>
+                    </p></li>
+                    <li><p id="ref7" class="list-paragraph">
+                        [7] NativeScript application architecture and lifecycle, [<a class="link" href="https://docs.nativescript.org/angular/core-concepts/application-lifecycle">https://docs.nativescript.org/angular/core-concepts/application-lifecycle</a>], последно посетен на 2020-04-08  <a class="link" href="#p5">↩</a>
+                    </p></li>
+                </ul>
+                <hr>
+                <h2 id="p6" class="paragraph-heading">Примерен код</h2>
+                <ul>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c1">Код 1.</a> Пример за импорт на плъгин</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c2">Код 2.</a> Пример за стартиране на приложение</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c3">Код 3.</a> Пример за модул</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c4">Код 4.</a> Пример за добавяне на стилове</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c5">Код 5.</a> Пример за data binding</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c6">Код 6.</a> Пример за инпорт на компоненти в Angular</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c7">Код 7.</a> Пример за компонент в Angular</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c8">Код 8.</a> Начална точка на приложение</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#c9">Код 9.</a> Примери за обработка на събития</p>
+                    </li>
+                </ul>
+                <hr>
+                <h2 id="p6" class="paragraph-heading">Използвани фигури</h2>
+                <ul>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#f1">Фигура 1.</a> Схема на работа на NativeScript приложението</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#f2">Фигура 2.</a> Схема на работа на Runtimes</p>
+                    </li>
+                    <li>
+                        <p class="list-paragraph"><a class="link" href="#f3">Фигура 3.</a> Схема на работа на Основните модули</p>
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </body>
+</html>
