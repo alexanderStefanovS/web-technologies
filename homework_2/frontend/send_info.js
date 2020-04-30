@@ -90,32 +90,47 @@ document.getElementById('info-form').onsubmit = () => {
     const firstName = document.getElementById('first-name').value;
     const lastName = document.getElementById('last-name').value;
     const courseYear = document.getElementById('course-year').value;
-    const specialty = document.getElementById('specialty').value;
+    const speciality = document.getElementById('specialty').value;
     const birthdate = document.getElementById('birthdate').value;
     const zodiacSign = document.getElementById("zodiac-sign").value;
+    const link = document.getElementById("link").value;
+    const motivation = document.getElementById("motivation").value;
+    const image = document.getElementById('img');
+
+    const file = image.files[0];
+
+    console.log(file);
 
     userData = {
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
+        courseYear: courseYear,
+        speciality: speciality,
+        birthdate: birthdate,
+        zodiacSign: zodiacSign,
+        link: link,
+        motivation: motivation
     }
+
+    const data = new FormData();
+
+    data.append('userData', JSON.stringify(userData));
+    data.append('image', file);
 
     init = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
+        body: data,
       }
 
     console.log(init.body);
 
-    /*fetch('http://localhost/homework_2/backend/info_manager.php', init)
+    fetch('http://localhost/homework_2/backend/info_manager.php', init)
         .then((response) => {
             return response.text();
         })
         .then((data) => {
             console.log(data);
-        });*/
+        });
 
     return false;
 };
