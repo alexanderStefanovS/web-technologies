@@ -6,7 +6,7 @@ class Database {
 
     public function __construct() {
         $host = "localhost";
-	    $dbname = "homework_2_db";
+	    $dbname = "62120_Aleksandar_Stefanov";
 	    $username = "root";
 	    $password = "";
         

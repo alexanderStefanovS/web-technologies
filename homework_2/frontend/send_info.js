@@ -91,6 +91,8 @@ document.getElementById('info-form').onsubmit = () => {
     const lastName = document.getElementById('last-name').value;
     const courseYear = document.getElementById('course-year').value;
     const speciality = document.getElementById('specialty').value;
+    const fn = document.getElementById('fn').value;
+    const groupNumber = document.getElementById('group-number').value;
     const birthdate = document.getElementById('birthdate').value;
     const zodiacSign = document.getElementById("zodiac-sign").value;
     const link = document.getElementById("link").value;
@@ -106,6 +108,8 @@ document.getElementById('info-form').onsubmit = () => {
         lastName: lastName,
         courseYear: courseYear,
         speciality: speciality,
+        fn: fn,
+        groupNumber: groupNumber,
         birthdate: birthdate,
         zodiacSign: zodiacSign,
         link: link,
@@ -124,7 +128,7 @@ document.getElementById('info-form').onsubmit = () => {
 
     console.log(init.body);
 
-    fetch('http://localhost/homework_2/backend/info_manager.php', init)
+    fetch('http://localhost:80/web/homework_2/backend/info_manager.php', init)
         .then((response) => {
             return response.text();
         })
