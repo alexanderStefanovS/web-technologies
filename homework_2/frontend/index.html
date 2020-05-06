@@ -1,68 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Въвеждане на информация</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h2 class="header-title">Въвеждане на информация</h2>
-            </div>
-            <form id="info-form">
-                <div class="input-group">
-                    <label for="first-name">Собствено име</label>
-                    <input id="first-name" class="input-box" type="text" 
-                        pattern="[A-ZА-Я][a-zа-я]*" maxlength="50" placeholder="Собствено име">
-                </div>
-                <div class="input-group">
-                    <label for="last-name">Фамилно име</label>    
-                    <input id="last-name" class="input-box" type="text" 
-                        pattern="[A-ZА-Я][a-zа-я]*" maxlength="50" placeholder="Фамилно име">
-                </div> 
-                <div class="input-group">
-                    <label for="course-year">Курс</label>
-                    <input id="course-year" class="input-box" type="number"
-                        placeholder="Курс - година" min="1" max="6">
-                </div>
-                <div class="input-group">
-                    <label for="specialty">Специалност</label>
-                    <input id="specialty" class="input-box" placeholder="Специалност">
-                </div>
-                <div class="input-group">
-                    <label for="fn">Факултетен номер</label>
-                    <input id="fn" class="input-box" placeholder="Факултетен номер">
-                </div>
-                <div class="input-group">
-                    <label for="group-number">Номер на група</label>
-                    <input id="group-number" type="number" class="input-box" placeholder="Номер на група">
-                </div>
-                <div class="input-group">
-                    <label for="birthdate">Дата на раждане</label>
-                    <input id="birthdate" type="date" class="input-box">
-                </div>
-                <div class="input-group">
-                    <label for="zodiac-sign">Зодиакален знак</label>
-                    <input id="zodiac-sign" class="input-box" 
-                        placeholder="Зодиакален знак" readonly>
-                </div>
-                <div class="input-group">
-                    <label for="link">Линк</label>
-                    <input type="url" id="link" class="input-box" placeholder="Линк">
-                </div>
-                <div class="input-group">
-                    <label for="motivation">Снимка</label>
-                    <input class="input-box" type="file" id="img" name="img" accept="image/*">
-                </div>
-                <div class="input-group">
-                    <label for="motivation">Мотивация</label>
-                    <textarea type="url" id="motivation" class="text-box" 
-                        placeholder="Мотивация"></textarea>
-                </div>
-                <button type="submit" class="btn">Въведи информацията</button>
-            </form>
+
+<head>
+    <title>Въвеждане на информация</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="header-title">Въвеждане на информация</h2>
         </div>
-    </body>
-    <script src="send_info.js"></script>
-</html>
+        <form id="info-form">
+            <div class="input-group">
+                <label for="first-name">Собствено име</label>
+                <input id="first-name" class="input-box" type="text" pattern="[A-ZА-Я][a-zа-я]*" maxlength="50" placeholder="Собствено име" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Фамилно име</label>
+                <input id="last-name" class="input-box" type="text" pattern="[A-ZА-Я][a-zа-я]*" maxlength="50" placeholder="Фамилно име" required>
+            </div>
+            <div class="input-group">
+                <label for="course-year">Курс</label>
+                <input id="course-year" class="input-box" type="number" placeholder="Курс - година" min="1" max="6" required>
+            </div>
+            <div class="input-group">
+                <label for="specialty">Специалност</label>
+                <input id="specialty" class="input-box" placeholder="Специалност" required>
+            </div>
+            <div class="input-group">
+                <label for="fn">Факултетен номер</label>
+                <input id="fn" class="input-box" type="number" placeholder="Факултетен номер" required>
+            </div>
+            <div class="input-group">
+                <label for="group-number">Номер на група</label>
+                <input id="group-number" type="number" class="input-box" placeholder="Номер на група" required>
+            </div>
+            <div class="input-group">
+                <label for="birthdate">Дата на раждане</label>
+                <input id="birthdate" type="date" class="input-box" required>
+            </div>
+            <div class="input-group">
+                <label for="zodiac-sign">Зодиакален знак</label>
+                <input id="zodiac-sign" class="input-box" placeholder="Зодиакален знак" readonly>
+            </div>
+            <div class="input-group">
+                <label for="link">Линк</label>
+                <input type="url" id="link" class="input-box" placeholder="Линк" required>
+            </div>
+            <div class="input-group">
+                <label for="motivation">Снимка</label>
+                <input class="input-box" type="file" id="img" name="img" accept="image/*" required>
+            </div>
+            <div class="input-group">
+                <label for="motivation">Мотивация</label>
+                <textarea type="url" id="motivation" class="text-box" placeholder="Мотивация" required></textarea>
+            </div>
+            <button type="submit" class="btn">Въведи информацията</button>
+        </form>
+        <p id="msg" class="message"></p>
+    </div>
+</body>
+<script src="send_info.js"></script>

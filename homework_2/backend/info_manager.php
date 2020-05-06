@@ -3,8 +3,33 @@
 require_once "./Database.php";
 require_once "./user_model.php";
 
+function areSet() {
+	if (!isset($_POST['userData']) || !isset($_FILES['image'])) {
+		return false;
+	}
+	return true;
+}
+
+function validate() {
+	if (!areSet()) {
+		return false;
+	}
+
+	$json = $_POST['userData'];
+	$values = json_decode($json, true);
+
+	if (empty($values['firstName']) || empty($values['lastName']) || empty($values['courseYear'])
+		|| empty($values['speciality']) || empty($values['fn']) || empty($values['groupNumber']) 
+		|| empty($values['birthdate']) || empty($values['zodiacSign']) || empty($values['link']) 
+		|| empty($values['motivation'])) {
+		return false;
+	}
+
+	return true;
+}
+
 function saveFile($fileName) {
-	$target = '../images' . $fileName;
+	$target = '../images/' . $fileName;
 
 	move_uploaded_file($_FILES['image']['tmp_name'], $target);
 }
@@ -14,8 +39,10 @@ function getRequestData() {
 	$values = json_decode($json, true);
 
 	$file = $_FILES['image'];
-	$fileName = $file['name'];
-
+	$info = pathinfo($file['name']);
+	$ext = $info['extension']; 
+	$fn = $values['fn'];
+	$fileName = $fn . "." . $ext; 
 	saveFile($fileName);
 
 	$user = new UserModel($values['firstName'], $values['lastName'], 
@@ -23,71 +50,44 @@ function getRequestData() {
 						$values['fn'], $values['groupNumber'],
 						$values['birthdate'], $values['zodiacSign'],
 						$values['link'], $fileName, $values['motivation']);
+	
 	return $user;
 }
 
-function getSQLQuery() {
-	return "INSERT INTO `users` (firstname, lastname, course_year, speciality,
-					fn, group_number, birthdate, zodiac_sign, link, image, motivation) 
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+if (!validate()) {
+	echo "Данните са некоректни";
+	throw new Exception();
 }
 
-function insert($sql, $user, $connection) {
-	$insertStatement = $connection->prepare($sql);
-	$insertResult = $insertStatement->execute([$user->firstName, $user->lastName, 
-					$user->courseYear, $user->speciality, $user->fn, $user->groupNumber,
-					$user->birdthdate, $user->zodiacSign, $user->link, $user->image,
-					$user->motivation]);
+try {
+	$database = new Database();
+	$connection = $database->getConnection();
+} catch (PDOException $e) {
+	echo json_encode([
+		'success' => true,
+		'message' => "Неуспешно свързване с базата данни",
+	]);
 }
-
-function selectAllUsers($connection) {
-	$sql = "SELECT * FROM `users`";
-	$query = $connection->prepare($sql);
-	$query->execute([]);
-
-	$users = "";
-
-	while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-		$users .= $row['firstname'] . " " . $row['lastname'] . " " . $row['course_year']
-						. " " . $row['speciality'] . " " . $row['fn']
-						. " " . $row['group_number'] . " " . $row['birthdate'] . " " . 
-						$row['zodiac_sign'] . " " . $row['link'] . " " . $row['image'] . " "
-						 . $row['motivation'] . "\n";
-	}
-	return $users;
-}
-
-$database = new Database();
-$connection = $database->getConnection();
 
 $user = getRequestData();
-$sql = getSQLQuery();
-insert($sql, $user, $connection);
 
-$response = selectAllUsers($connection);
+try {
+	$user->insert($connection);
 
-echo $response;
+	$response = [
+		'success' => true,
+		'message' => "Данните са записани успешно"
+	];
+} catch (Exception $exc) {
 
+	$message = $exc->getMessage();
 
-/**  
- * TEST
-*/
+	$response = [
+		'success' => false,
+		'message' => $message
+	];
+}
 
-/*$json = $_POST['userData'];
-$values = json_decode($json, true);
-
-echo var_dump($_POST['userData']);
-echo var_dump($json);
-echo var_dump($values);
-echo var_dump($_FILES);
-
-$file = $_FILES['image'];
-$fileName = $file['name'];
-$target = '../images' . $fileName;
-
-echo var_dump($target);
-echo var_dump($file['tmp_name']);
-
-move_uploaded_file($_FILES['image']['tmp_name'], $target);*/
+echo json_encode($response);
 
 ?>

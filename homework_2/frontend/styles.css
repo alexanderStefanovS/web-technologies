@@ -1,9 +1,27 @@
 
+.message {
+    display: none;
+}
+
+.error-message {
+    background-color: red;
+    color: white;
+    display: inline-block;
+    font-size: 25px;
+}
+
+.info-message {
+    background-color: green;
+    color: white;
+    display: inline-block;
+    font-size: 25px;
+}
+
 .container {
     position: absolute;
     left: 35%;
     width: 30%; 
-    top: 15%;
+    top: 7%;
     max-height: calc(100% - 250px); 
     border-color: black; 
     border-style: solid;
