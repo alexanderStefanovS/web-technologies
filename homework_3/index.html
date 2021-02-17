@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="header-title">Регистрация</h2>
+        </div>
+        <form id="reg-form">
+            <div class="input-group">
+                <label class="required" for="username">Потребителско име</label>
+                <input id="username" class="input-box" type="text" placeholder="Потребителско име" oninput="validateInput(this.id)">
+                <p id='username-err' class='err-hidden'></p>
+            </div>
+            <div class="input-group">
+                <label class="required" for="name">Име и фамилия</label>
+                <input id="name" class="input-box" type="text" placeholder="Име и фамилия" oninput="validateInput(this.id)">
+                <p id='name-err' class='err-hidden'></p>
+            </div>
+            <div class="input-group">
+                <label class="required" for="email">Имейл</label>
+                <input id="email" class="input-box" type="text" placeholder="Имейл" oninput="validateInput(this.id)">
+                <p id='email-err' class='err-hidden'></p>
+            </div>
+            <div class="input-group">
+                <label class="required" for="password">Парола</label>
+                <input id="password" class="input-box" type="password" placeholder="Парола" oninput="validateInput(this.id)">
+                <p id='password-err' class='err-hidden'></p>
+            </div>
+            <div class="input-group">
+                <label for="street">Улица</label>
+                <input id="street" class="input-box" type="text" placeholder="Улица">
+            </div>
+            <div class="input-group">
+                <label for="city">Град</label>
+                <input id="city" type="text" class="input-box" placeholder="Град">
+            </div>
+            <div class="input-group">
+                <label for="zipcode">Пощенси код</label>
+                <input id="zipcode" type="text" class="input-box" placeholder="11111-1111" oninput="validateInput(this.id)">
+                <p id="zipcode-err" class="err-hidden"></p>
+            </div>
+            <button type="submit" class="btn">Регистрирай се</button>
+            <p id="msg" class="err-hidden"></p>
+        </form>
+    </div>
+</body>
+<script src="script.js"></script>

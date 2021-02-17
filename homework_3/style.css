@@ -1,0 +1,87 @@
+.message {
+    display: none;
+}
+
+.container {
+    position: absolute;
+    left: 35%;
+    width: 30%; 
+    top: 7%;
+    max-height: calc(100% - 150px); 
+    border-color: black; 
+    border-style: solid;
+    background-color: #e6f1ff;
+    border-color: grey;
+    border-radius: 10px;
+    border-width: 1px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px; 
+    overflow: auto;
+}
+
+.header {
+    height: 40px;
+    background-color: #6699ff;
+    padding-top: 10px;
+}
+
+.header-title {
+    color: white;
+    margin: 0;
+}
+
+.input-group {
+    margin-top: 4%;
+}
+
+.input-box {
+    position: relative;
+    width: 75%;
+    height: 25px;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+
+.btn {
+    position: relative;
+    width: 75%;
+    height: 30px;
+    margin-top: 4%;
+    border-radius: 3px;
+    background-color: #6699ff;
+    color: white;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-left: 12%;
+}
+
+.text-box {
+    position: relative;
+    width: 75%;
+    height: 75px;
+    padding-left: 5px;
+    border-radius: 3px;
+}
+
+.err-msg {
+    color: red;
+    display: block;
+}
+
+.err-hidden {
+    display: none;
+}
+
+.reg-completed {
+    color: green;
+    display: block;
+}
+
+.required:after{
+    content:"*" ;
+    color:red   
+}
